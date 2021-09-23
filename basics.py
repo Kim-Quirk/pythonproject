@@ -1,3 +1,19 @@
+# Variables (Y)
+
+# Expressions (Y)
+
+# Conditionals (Y)
+
+# Loops (Y)
+
+# Functions (Y)
+
+# Classes (N)
+
+# Data structures (e.g. list, tuple, dict, or set) (Y - Tuple)
+
+#Stretch: Modify your program to read and write from a file. (Y)
+
 import random
 import keyboard
 # import arcade
@@ -7,8 +23,9 @@ def startGame():
     word = randomWordGen()
     display = ["_"] * len(word)
     string = printWord(display)
-    print("Welcome to Hangman! \nYou have six lives. Every incorrect guess will take away a life. Once your lives reach zero, you will lose the game.")
-    print(string)  
+    print("\n\n\nWelcome to Hangman!\n\nYou have six lives. Every incorrect guess will take away a life. Once your lives reach zero, you will lose the game.\nHint: None of the words will contain any special characters or numbers.")
+    print("\nLives: 6")
+    print(string)
     correct_guess = []
     incorrect_guess = []
     return over, word, correct_guess, incorrect_guess
@@ -33,7 +50,7 @@ def enterLetter():
     # guess = keyboard.read_key()
     guess = "No guess"
     while len(guess) > 1:
-        guess = input("Enter your guess: ")
+        guess = input("\nEnter your guess: ")
         if len(guess) > 1:
             print("Please enter only one letter. Do not enter numbers or symbols.")
     guess = guess.lower()
@@ -55,8 +72,9 @@ def runGame(word, correct_guess, incorrect_guess, over):
         print("Incorrect!")
         print("\n")
         incorrect_guess.append(guess)
-        print("Incorrect guesses: " + str(incorrect_guess))
     lives = updateLives(incorrect_guess)
+    if incorrect_guess:
+        print("Incorrect guesses: " + str(incorrect_guess))
     print("Lives: " + str(lives))
     display = ["_"] * len(word)
     for i in range(0, len(word)):
